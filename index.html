@@ -3,9 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>bg move</title>
+    <style>
+        .header  {
+           
+  text-align: center;
+        }
+
+        .footer{
+            text-align: center;
+        }
+        .container {
+            max-width:1200px;
+            margin: 5rem auto;
+        }
+        .slider {
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+            background-color:#ccc;
+            border-radius: 15px;
+            box-shadow: 0 30px 30px -20px rgba(0,0,0,0.5)
+        }
+        .bg {
+            background: url("baloon.jpg") center no-repeat;
+            width: 110%;
+            height: 110%;
+            position: absolute;
+            top: -5%;
+            left: -5%;
+            transition: all 0.5s ease-out;
+        }
+
+    </style>
 </head>
 <body>
-    salam
+    <div class="header" ><h1> Some Awosome effect by mouse</h1></div>
+    <div class="container">
+        <div class="slider">
+            <div class="bg">
+
+            </div>
+
+        </div>
+
+    </div>
+    
+    <div class="footer">
+        <a href="https://github.com/sararekab/bg-moveByMouse"  target="_blank">
+        You can see my code in my github repository.
+        </a>
+    </div>
+<script>
+    let slider = document.querySelector('.slider');
+    let bg = document.querySelector('.bg');
+    let sliderWidth = slider.offsetWidth;
+    let sliderHeight = slider.offsetHeight;
+    let bgMovement = 40;
+    slider.addEventListener('mousemove' ,  function(mhj){
+        movement(mhj);
+
+    } )
+    function movement(event) {
+        let mouseX = Math.floor((event.offsetX - (sliderWidth /2)) * (bgMovement /sliderWidth ));
+        let mouseY = Math.floor((event.offsetY - (sliderHeight /2)) * (bgMovement /sliderHeight));
+
+        bg.style.transform = `translate(${mouseX}px , ${mouseY}px)`;
+        // console.log(mouseX , mouseY);
+    }
+
+</script> 
 </body>
 </html>
